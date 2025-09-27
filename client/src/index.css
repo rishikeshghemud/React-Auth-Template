@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 20% 99%;
+    --foreground: 220 15% 25%;
+
+    /* Brand colors */
+    --primary: 260 85% 65%;
+    --primary-glow: 280 90% 75%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 96%;
+    --secondary-foreground: 220 15% 25%;
+
+    /* UI colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 25%;
+    --muted: 240 10% 96%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 260 85% 65%;
+    --accent-foreground: 0 0% 100%;
+    --border: 240 15% 90%;
+    --input: 240 15% 90%;
+    --ring: 260 85% 65%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-background: linear-gradient(180deg, hsl(240 30% 99%), hsl(250 20% 96%));
+
+    /* Typography */
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 240 15% 95%;
+    --primary: 260 85% 65%;
+    --primary-glow: 280 90% 75%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 240 15% 95%;
+    --card: 220 25% 10%;
+    --card-foreground: 240 15% 95%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 240 10% 65%;
+    --accent: 260 85% 65%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 260 85% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background: var(--gradient-background);
+    @apply text-foreground;
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
