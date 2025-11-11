@@ -11,7 +11,6 @@ export interface AuthContextType {
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
-  refreshAccessToken: () => Promise<boolean>;
 }
 
 export interface LoginCredentials {

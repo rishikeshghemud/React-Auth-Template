@@ -2,14 +2,19 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const Dashboard = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const {toast} = useToast();
 
     const handleLogout = async () => {
         try {
             await logout();
+            toast({
+                title: "Logged Out!"
+            })
             navigate('/login');
         } catch (error) {
             console.error('Logout failed:', error);
@@ -49,7 +54,7 @@ const Dashboard = () => {
                             Hello World! 🌍
                         </h2>
                         <p className="text-lg text-gray-600 mb-8">
-                            Welcome to your Chat App Dashboard!
+                            Welcome to your App Dashboard!
                         </p>
                         <p className="text-gray-500">
                             You have successfully logged in and reached the main dashboard.

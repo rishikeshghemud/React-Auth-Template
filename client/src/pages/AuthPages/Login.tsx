@@ -28,7 +28,7 @@ const Login = () => {
             await login(email, password);
             toast({
                 title: "Login Successful",
-                description: "Welcome back! Redirecting to your dashboard...",
+                description: "Welcome back!",
             });
             navigate(from, { replace: true });
         } catch (e: any) {

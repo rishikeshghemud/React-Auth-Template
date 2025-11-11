@@ -48,7 +48,7 @@ app.post('/login', async (req, res) => {
         const { password: _, ...safeUser } = user;
 
         // Generate JWT token
-        const accessToken = jwt.sign({ ...safeUser }, process.env.JWT_SECRET_KEY, { expiresIn: '15m' });
+        const accessToken = jwt.sign({ ...safeUser }, process.env.JWT_SECRET_KEY, { expiresIn: '3s' });
 
         const refreshToken = jwt.sign({ ...safeUser }, process.env.JWT_REFRESH_KEY, { expiresIn: "7d" });
 
@@ -185,7 +185,7 @@ app.post("/refresh", async (req, res) => {
         const { password: _, ...safeUser } = user;
 
         const accessToken = jwt.sign(safeUser, process.env.JWT_SECRET_KEY, {
-            expiresIn: "15m"
+            expiresIn: "5s"
         })
 
         res.cookie("accessToken", accessToken, {
@@ -197,7 +197,7 @@ app.post("/refresh", async (req, res) => {
         res.status(200).json({ message: "Access token refreshed!", user: safeUser });
     } catch (e) {
         console.log(e);
-        res.status(401).json({ message: "Invalid or expired refresh token" });
+        res.status(500).json({ message: "Invalid or expired refresh token" });
     }
 });
 
